@@ -1,0 +1,153 @@
+.header {
+	background: #000;
+
+
+	&__menu {
+		padding: 15px 0;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.menu {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	@include mq("tablet-2") {
+		display: none;
+	}
+
+	&__list {
+		display: flex;
+		gap: 30px;
+
+		@include mq("tablet-2") {
+			flex-direction: column;
+			margin-bottom: 60px;
+		}
+	}
+
+	&__link {
+		padding: 10px 0;
+		display: block;
+	}
+
+	&__tel {
+		@include mq("tablet-2") {
+			display: none;
+		}
+	}
+
+	&-burger {
+		@include mq("tablet-2") {
+			display: block;
+			color: $black;
+		}
+
+		.menu__tel {
+			display: block;
+		}
+	}
+
+}
+
+.burger {
+
+	&-menu {
+		display: none;
+
+		@include mq("tablet-2") {
+			position: fixed;
+			top: 0;
+			left: 0;
+			overflow-y: auto;
+			z-index: 20;
+			display: flex;
+			flex-direction: column;
+			gap: 50px;
+			width: 70%;
+			height: 100%;
+			padding: 30px 40px;
+			background: $white;
+			visibility: hidden;
+			transform: translateX(-100%);
+			transition: transform .3s ease-in-out, visibility .3s ease-in-out;
+		}
+
+		&--active {
+			visibility: visible;
+			transform: translateX(0);
+		}
+	}
+
+	&-btn {
+		display: none;
+
+		@include mq("tablet-2") {
+			display: block;
+			position: relative;
+			z-index: 20;
+			min-width: 30px;
+			height: 24px;
+		}
+
+		&__line,
+		&::before,
+		&::after {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: rgba($gray, .6);
+			border-radius: 2px;
+			transition: transform .3s ease-in-out, top .3s ease-in-out, background-color .3s ease-in-out;
+		}
+
+		&::before,
+		&::after {
+			content: '';
+		}
+
+		&__line {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&::before {
+			top: 0;
+		}
+
+		&::after {
+			top: 100%;
+			transform: translateY(-50%);
+		}
+
+		&--active {
+
+			.burger-btn__line,
+			&::before,
+			&::after {
+				background-color: rgba($white, .9);
+			}
+
+			.burger-btn__line {
+				transform: translateY(-50%) scale(0);
+			}
+
+			&::before {
+				top: 50%;
+				transform: translateY(-50%) rotate(45deg);
+			}
+
+			&::after {
+				top: 50%;
+				transform: translateY(-50%) rotate(-45deg);
+			}
+		}
+	}
+}
