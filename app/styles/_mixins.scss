@@ -6,21 +6,15 @@
 	position: $pos;
 }
 
-$breakpoints: ("phone": 560px,
-	"tablet": 768px,
-	"tablet-2": 992px,
-	"desktop": 1230px,
-);
-
-@mixin mq($width, $type: max) {
-	@if map_has_key($breakpoints, $width) {
-		$width: map_get($breakpoints, $width);
-
-		@if $type==max {
-			$width: $width - 1px;
+@mixin mq($from, $to: false) {
+	@if $to {
+		@media (min-width: #{$from}px) and (max-width: #{$to}px) {
+			@content;
 		}
+	}
 
-		@media only screen and (#{$type}-width: $width) {
+	@else {
+		@media (max-width: #{$from}px) {
 			@content;
 		}
 	}

@@ -5,22 +5,29 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>START</title>
+	<title>Portfolio 👜</title>
+	<link rel="icon" type="image/x-icon" href="images/favicon.svg">
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.svg">
 	<link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
+
 	<div class="wrapper">
 		@include('blocks/_header.html')
 
+		<a class="up animate__animated animate__zoomInRight" href="#header"></a>
+
 		<main class="main">
-			<div class="box">123213</div>
-			<div class="box"></div>
+			@include('homepage/_about.html')
+			@include('homepage/_portfolio.html')
+			@include('homepage/_contacts.html')
 		</main>
 
 		@include('blocks/_footer.html')
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossorigin="anonymous"></script>
 	<script src="js/main.min.js"></script>
 </body>
 
