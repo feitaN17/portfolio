@@ -114,6 +114,10 @@ section {
 			background-color: #585858;
 			opacity: .25;
 			z-index: -1;
+
+			@include mq("568") {
+				bottom: 12px;
+			}
 		}
 	}
 

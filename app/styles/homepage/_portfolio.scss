@@ -1,5 +1,7 @@
 .portfolio {
 
+	&__list {}
+
 	&__item {
 		position: relative;
 		padding-top: 70px;
@@ -141,6 +143,24 @@
 			height: 300px;
 			padding: 15px;
 			border-radius: 45px;
+		}
+	}
+
+	&__more {
+		display: block;
+		text-decoration: underline;
+		margin: 0 auto;
+		transition: color .3s ease;
+
+		margin-top: 70px;
+
+		@include mq("768") {
+			margin-top: 50px;
+		}
+
+		&:hover {
+			color: #f27b9b;
+			text-decoration: none;
 		}
 	}
 }

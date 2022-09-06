@@ -3,11 +3,33 @@ import SmoothScroll from 'smooth-scroll'
 import IMask from 'imask'
 
 document.addEventListener('DOMContentLoaded', () => {
+	// 111
+	$(document).ready(function () {
+		let list = $('.portfolio__list .portfolio__item')
+		let numToShow = 2 //сколько показывать элементов
+		let button = $('.portfolio__more')
+		let numInList = list.length
+		list.hide()
+		if (numInList > numToShow) {
+			button.show()
+		}
+		list.slice(0, numToShow).show()
+		button.click(function () {
+			let showing = list.filter(':visible').length
+			list.slice(showing - 1, showing + numToShow).fadeIn()
+			let nowShowing = list.filter(':visible').length
+			if (nowShowing >= numInList) {
+				button.hide()
+			}
+		})
+	})
+	// 111
+
 	document.querySelectorAll('.phone-mask').forEach((e) => {
 		const phoneMask = IMask(e, { mask: '+{7} (000)000-00-00' })
 	})
 	$(window).scroll(function () {
-		var target = $(this).scrollTop()
+		let target = $(this).scrollTop()
 
 		if (target == 0) {
 			$('.up').removeClass('up--active')
